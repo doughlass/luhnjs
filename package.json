@@ -1,6 +1,6 @@
 {
   "name": "@doughlass/luhnjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An ES module, CommonJS and UMD package built using Luhn algorithm to generate and/or validate numbers.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
