@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.3
-  win: circleci/windows@5.0.0
 
 executors:
   linux: # a Linux VM running Ubuntu 20.04
@@ -10,7 +9,7 @@ executors:
       image: ubuntu-2004:202107-02
   windows:
     machine:
-      image: windows-default
+      image: windows-server-2019
 
 jobs:
   test:
