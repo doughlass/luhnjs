@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
+  win: circleci/windows@4.1
 
 executors:
   linux: # a Linux VM running Ubuntu 20.04
