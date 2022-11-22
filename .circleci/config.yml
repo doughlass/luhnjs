@@ -9,7 +9,7 @@ executors:
       image: ubuntu-2004:202107-02
   windows:
     machine:
-      image: windows-server-2019
+      image: windows-server-2019-cuda:current
 
 jobs:
   test:
@@ -18,7 +18,7 @@ jobs:
         type: executor
       node-version:
         type: string
-    resource_class: medium
+    resource_class: windows.medium
     executor: << parameters.os >>
     steps:
       - checkout
