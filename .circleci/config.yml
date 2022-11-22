@@ -11,9 +11,6 @@ executors:
   windows:
     machine:
       image: win/server-2019
-  macos: # macos executor running Xcode
-    macos:
-      xcode: 12.5.1
 
 jobs:
   test:
@@ -29,6 +26,9 @@ jobs:
           node-version: << parameters.node-version >>
           install-yarn: true
       - run:
+          name: Install Dependancies
+          command: yarn
+      - run:
           name: Run Tests
           command: yarn test
 
@@ -38,5 +38,5 @@ workflows:
       - test:
           matrix:
             parameters:
-              os: [linux, windows]
+              os: [linux]
               node-version: ["14.17.6", "16.9.0"]
