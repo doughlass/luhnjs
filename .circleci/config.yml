@@ -8,6 +8,7 @@ executors:
     machine:
       image: ubuntu-2004:202107-02
   windows:
+    resource_class: medium
     machine:
       image: windows-server-2019
 
