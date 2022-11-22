@@ -1,16 +1,15 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@4.7
+
 executors:
-  docker: # Docker using the Base Convenience Image
-    docker:
-      - image: cimg/base:stable
-  linux:
+  linux: # a Linux VM running Ubuntu 20.04
     machine:
       image: ubuntu-2004:202107-02
-
-orbs:
-  node: circleci/node@5.0.3
-  path-filtering: circleci/path-filtering@0.1.3
+  macos: # macos executor running Xcode
+    macos:
+      xcode: 12.5.1
 
 jobs:
   test:
@@ -25,27 +24,12 @@ jobs:
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
-      - restore_cache:
-          # See the configuration reference documentation for more details on using restore_cache and save_cache steps
-          # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
-          keys:
-            - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
-      - run:
-          name: install packages
-          command: yarn
-      - save_cache:
-          key: node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
-          paths:
-            - ~/.npm
-      - run:
-          name: Run Tests
-          command: yarn test
 
 workflows:
-  test_pipeline:
+  all-tests:
     jobs:
       - test:
           matrix:
             parameters:
-              os: ["linux"]
-              node-version: ["14.x", "16.x"]
+              os: [linux, macos]
+              node-version: ["14.17.6", "16.9.0"]
