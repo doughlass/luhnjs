@@ -7,9 +7,6 @@ executors:
   linux:
     machine:
       image: ubuntu-2004:202107-02
-  windows:
-    machine:
-      image: win/default
 
 orbs:
   node: circleci/node@5.0.3
@@ -50,5 +47,5 @@ workflows:
       - test:
           matrix:
             parameters:
-              os: ["windows", "linux"]
+              os: ["linux"]
               node-version: ["14.x", "16.x"]
