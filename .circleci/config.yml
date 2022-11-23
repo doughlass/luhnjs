@@ -10,7 +10,7 @@ executors:
       image: ubuntu-2004:202107-02
   windows:
     machine:
-      image: 'windows-server-2022-gui:current'
+      image: 'windows-server-2019-vs2019:2022.08.1'
 
 jobs:
   test:
